@@ -56,7 +56,7 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = 'system';
+	$system_path = 'system/ci';
 
 /*
  *---------------------------------------------------------------
@@ -72,7 +72,21 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = 'application';
+	$application_folder = 'system/cms';
+
+/*
+ *---------------------------------------------------------------
+ * CONTENT FOLDER NAME
+ *---------------------------------------------------------------
+ *
+ * This variable must contain the name of your "content" folder
+ * for your template,modules and etc content. Include the path if
+ * the folder is not in the same  directory as this file.
+ *
+ * NO TRAILING SLASH!
+ *
+ */
+	$content_folder = 'content';
 
 /*
  * --------------------------------------------------------------------
@@ -174,6 +188,9 @@ if (defined('ENVIRONMENT'))
 
 	// Name of the "system folder"
 	define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
+
+	// Path to the content folder for this site
+	define('CONTENTPATH', $content_folder.'/');
 
 
 	// The path to the "application" folder
