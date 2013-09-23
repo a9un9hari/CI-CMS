@@ -38,9 +38,21 @@
 |
 */
 
+$admin_url										= 'admin';
+
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 
+$route[$admin_url.'/login']						= 'users/login';
+$route[$admin_url.'/login/action']				= 'users/login/action';
+$route[$admin_url.'/login/(:any)']				= 'users/login/index/$1';
+$route[$admin_url.'/logout']					= 'users/auth/logout';
+
+$route[$admin_url.'/([a-zA-Z0-9_-]+)']			= '$1/admin/index';
+$route[$admin_url.'/([a-zA-Z0-9_-]+)/(:any)']	= '$1/admin/$2';
+
+$route[$admin_url]								= 'admin';
+$route[$admin_url.'/dashboard']					= 'admin';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -5,23 +5,27 @@ class Login extends Public_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		if ($this->ion_auth->logged_in())
+		{
+			redirect('admin/dashboard', 'refresh');
+		}
 	}
 
 	//Load Login Form
 	function index($url = 'ZGFzaGJvYXJk')
 	{
+        $this->template->set_theme('admin');
+        $theme_path = base_url().$this->template->get_theme_path();
         $this->template
-        	->set_theme('admin')
-        	->title('Login')
+	        ->set('theme_path',$theme_path)
+        	->set_layout('login')
+			->title('Content Management System','Login')
 
         	->set('url', $url)
 
-        	->set_layout('login.html')
-
-        	->set_partial('form','partials/login_form.html')
-        	->set_partial('header','partials/login_header.html');
-		ci()->data['results'] = 'test';
-        $this->build();
+        	->set_partial('form','partials/login_form')
+        	->set_partial('header','partials/login_header')
+        	->build('login');
 	}
 
 	//Login Proses
@@ -31,7 +35,6 @@ class Login extends Public_Controller {
 		$this->form_validation->set_rules('identity', 'Identity', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 	    $this->form_validation->set_error_delimiters('<div class="alert alert-error">', '</div>');
-
 		if ($this->form_validation->run() == true)
 		{ 
 			//check to see if the user is logging in
@@ -53,7 +56,7 @@ class Login extends Public_Controller {
 				//redirect them back to the login page
 				$this->session->set_flashdata('message_type', 'error');
 				$this->session->set_flashdata('message_body', $this->ion_auth->errors());
-				redirect('users/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+				redirect('admin/users/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
