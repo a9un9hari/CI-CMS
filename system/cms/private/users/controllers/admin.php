@@ -18,26 +18,23 @@ class Admin extends Admin_Controller {
 
 	function index()
 	{
-		//list the users
+		$data 	= array();
+		//list the usersf
 		$users 				= $this->ion_auth->users()->result();
 		foreach ($users as $k => $user)
 		{
 			$users[$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 		}
-
-		$data['use'] = $users;
+		$data['users'] = $users;
 
 		// $data_notification	= get_notification_data($this->lang->line('user_title'), $this->lang->line('user_notification_info'));
 
 		$this->template
         	->title($this->title,'User List')
 
-        	->set_breadcrumb('Dashboard',site_url('dashboard'))
         	->set_breadcrumb('User List','#')
 
 			// ->set_partial('notifications','partials/notifications.html',$data_notification)
-        	
-        	->set('users',$users)
 
         	->set('module_name','User List')
         	->set('module_desc','Listing of User')
@@ -53,7 +50,6 @@ class Admin extends Admin_Controller {
 		$this->template
         	->title($this->title,'User List')
 
-        	->set_breadcrumb('Dashboard',site_url('dashboard'))
         	->set_breadcrumb('User',site_url('admin/users'))
 			->set_breadcrumb('Add User', '#')
 
@@ -160,7 +156,6 @@ class Admin extends Admin_Controller {
 		$this->template
         	->title($this->title,'Edit User')
 
-        	->set_breadcrumb('Dashboard',site_url('dashboard'))
         	->set_breadcrumb('User',site_url('admin/users'))
         	->set_breadcrumb('User Edit','#')
 

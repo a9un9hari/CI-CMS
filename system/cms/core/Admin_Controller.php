@@ -32,6 +32,8 @@ class Admin_Controller extends MY_Controller
                 var BASE_TEMPLATE = "'.$this->template->get_theme_path().'";
             </script>')
         
+        ->set_partial('header','partials/admin_header')
+        ->set_partial('navigation','partials/admin_navigation')
         ->set_partial('footer','partials/admin_footer');
 
         // Make sure whatever page the user loads it by, its telling search robots the correct formatted URL

@@ -68,7 +68,7 @@ class Auth extends Public_Controller {
 				//if the login was un-successful
 				//redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+				redirect('admin/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
@@ -98,6 +98,6 @@ class Auth extends Public_Controller {
 		$logout = $this->ion_auth->logout();
 
 		//redirect them back to the page they came from
-		redirect('login', 'refresh');
+		redirect('', 'refresh');
 	}
 }

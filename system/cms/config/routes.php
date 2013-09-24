@@ -48,8 +48,12 @@ $route[$admin_url.'/login/action']				= 'users/login/action';
 $route[$admin_url.'/login/(:any)']				= 'users/login/index/$1';
 $route[$admin_url.'/logout']					= 'users/auth/logout';
 
+$route[$admin_url.'/general/update/(:any)/(:num)']	= 'general/admin/update/$1/$2';
+$route[$admin_url.'/general/(:any)']				= 'general/admin/index/$1';
+
 $route[$admin_url.'/([a-zA-Z0-9_-]+)']			= '$1/admin/index';
 $route[$admin_url.'/([a-zA-Z0-9_-]+)/(:any)']	= '$1/admin/$2';
+
 
 $route[$admin_url]								= 'admin';
 $route[$admin_url.'/dashboard']					= 'admin';

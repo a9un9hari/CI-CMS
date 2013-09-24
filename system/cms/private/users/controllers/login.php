@@ -12,7 +12,7 @@ class Login extends Public_Controller {
 	}
 
 	//Load Login Form
-	function index($url = 'ZGFzaGJvYXJk')
+	function index($url = 'YWRtaW4=')
 	{
         $this->template->set_theme('admin');
         $theme_path = base_url().$this->template->get_theme_path();
